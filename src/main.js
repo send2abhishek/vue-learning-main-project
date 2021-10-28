@@ -1,3 +1,7 @@
 import { createApp } from 'vue';
 
-createApp({}).mount('#app');
+import routerConfig from './route';
+
+const app = createApp({});
+app.use(routerConfig);
+app.mount('#app');
