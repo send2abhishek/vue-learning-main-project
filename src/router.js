@@ -27,7 +27,7 @@ const router = createRouter({
         // route -> /coaches/c1/contact
         {
           name: 'coach-contact',
-          path: '/contact',
+          path: 'contact',
           component: CoacheContact
         }
       ]
