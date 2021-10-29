@@ -45,6 +45,7 @@
 
 <script>
 export default {
+  emits: ['save-data'],
   data() {
     return {
       firstName: '',
@@ -56,14 +57,14 @@ export default {
   },
   methods: {
     submitFormData() {
-      const inputs = {
+      const formData = {
         firstName: this.firstName,
         lastName: this.lastName,
-        description: this.description,
+        desc: this.description,
         rate: this.rate,
         area: this.area,
       };
-      console.log('submit', inputs.area[0]);
+      this.$emit('save-data', formData);
     },
   },
 };
