@@ -34,9 +34,31 @@ export default {
     CoachItem,
     CoachFilter,
   },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true,
+      },
+    };
+  },
   computed: {
     filteredCoaches() {
-      return this.$store.getters['coaches/coaches'];
+      const coaches = this.$store.getters['coaches/coaches'];
+      const filteredCoach = coaches.filter((coach) => {
+        if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
+          return true;
+        }
+        if (this.activeFilters.backend && coach.areas.includes('backend')) {
+          return true;
+        }
+        if (this.activeFilters.career && coach.areas.includes('career')) {
+          return true;
+        }
+        return false;
+      });
+      return filteredCoach;
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
@@ -44,7 +66,7 @@ export default {
   },
   methods: {
     setFilters(filterData) {
-      console.log('data', filterData);
+      this.activeFilters = filterData;
     },
   },
 };

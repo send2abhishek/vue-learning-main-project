@@ -10,8 +10,8 @@
       <label for="backend">Backend</label>
     </span>
     <span class="filter-option">
-      <input type="checkbox" id="carrer" checked @change="setFilters" />
-      <label for="carrer">Carrer</label>
+      <input type="checkbox" id="career" checked @change="setFilters" />
+      <label for="career">Career</label>
     </span>
   </base-card>
 </template>
@@ -24,7 +24,7 @@ export default {
       filters: {
         frontend: true,
         backend: true,
-        carrer: true,
+        career: true,
       },
     };
   },
