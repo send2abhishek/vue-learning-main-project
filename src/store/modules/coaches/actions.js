@@ -26,7 +26,10 @@ export default {
       id: userId
     });
   },
-  async fetchCoach(context) {
+  async fetchCoach(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
     const response = await fetch(
       `https://find-coach-d2bd7-default-rtdb.asia-southeast1.firebasedatabase.app/coaches.json`,
       {
@@ -51,5 +54,6 @@ export default {
       });
     }
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimeStamp');
   }
 };
