@@ -8,8 +8,11 @@ export default {
       description: data.desc,
       hourlyRate: data.rate
     };
+
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://find-coach-d2bd7-default-rtdb.asia-southeast1.firebasedatabase.app/coaches/${userId}.json`,
+      `https://find-coach-d2bd7-default-rtdb.asia-southeast1.firebasedatabase.app/coaches/${userId}.json?auth=${token}`,
       {
         method: 'PUT',
         body: JSON.stringify(coachDetails)
