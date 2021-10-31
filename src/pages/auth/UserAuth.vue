@@ -74,7 +74,8 @@ export default {
             password: this.password,
           });
         }
-        this.$router.replace('/coaches');
+        const redirectUrl = '/' + (this.$route.query.redirect || 'coaches');
+        this.$router.replace(redirectUrl);
       } catch (error) {
         this.error = error.message || 'something went wrong';
       }
